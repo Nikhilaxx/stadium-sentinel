@@ -1,6 +1,9 @@
 import { Person, Zone, Gate, Alert, RedirectionSuggestion } from '@/types/crowd';
 
+console.log('simulation.ts: Starting simulation module...');
+
 // Chinnaswamy Stadium configuration
+console.log('simulation.ts: Setting up stadium configuration...');
 export const CHINNASWAMY_CENTER: [number, number] = [12.9716, 77.5946];
 export const STADIUM_BOUNDS: [number, number][] = [
   [12.9708, 77.5938],
@@ -59,7 +62,9 @@ export class CrowdSimulation {
   private tickCount: number = 0;
 
   constructor() {
+    console.log('CrowdSimulation: Initializing simulation...');
     this.initializeCrowd();
+    console.log('CrowdSimulation: Simulation initialized successfully');
   }
 
   private initializeCrowd() {

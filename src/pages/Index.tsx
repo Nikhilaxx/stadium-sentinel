@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+
+// Add console logging for debugging
+console.log('Index.tsx: Starting imports...');
+
 import { CrowdSimulation } from '@/utils/simulation';
 import { CrowdMap } from '@/components/CrowdMap';
 import { AlertPanel } from '@/components/AlertPanel';
@@ -7,15 +11,29 @@ import { RedirectionPanel } from '@/components/RedirectionPanel';
 import { CommunicationPanel } from '@/components/CommunicationPanel';
 import { ControlPanel } from '@/components/ControlPanel';
 import { IncidentLog } from '@/components/IncidentLog';
+
+console.log('Index.tsx: UI components imported successfully');
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { CommunicationMessage, IncidentLog as IncidentLogType } from '@/types/crowd';
 import { Shield, Radio, Map, BarChart3, AlertTriangle, Navigation, FileText, Users } from 'lucide-react';
 
+console.log('Index.tsx: All imports completed successfully');
+
 const Index = () => {
-  const [simulation] = useState(() => new CrowdSimulation());
+  console.log('Index component: Starting initialization...');
+  
+  const [simulation] = useState(() => {
+    console.log('Index component: Creating simulation instance...');
+    return new CrowdSimulation();
+  });
+  
+  console.log('Index component: Simulation created, getting initial state...');
   const [simulationState, setSimulationState] = useState(simulation.getState());
   const [isRunning, setIsRunning] = useState(false);
+  
+  console.log('Index component: State initialized successfully');
   
   // UI Controls
   const [showFlowVectors, setShowFlowVectors] = useState(true);
