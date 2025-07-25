@@ -10,7 +10,7 @@ import { IncidentLog } from '@/User/components/IncidentLog';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/User/components/ui/tabs';
 import { Badge } from '@/User/components/ui/badge';
 import { CommunicationMessage, IncidentLog as IncidentLogType } from '@/types/crowd';
-import { Shield, Radio, Map, BarChart3, AlertTriangle, Navigation, FileText, Users } from 'lucide-react';
+import { Shield, Radio, Map, BarChart3, AlertTriangle, Navigation, FileText, Users, LifeBuoy } from 'lucide-react';
 
 const Index = () => {
   const [simulation] = useState(() => new CrowdSimulation());
@@ -144,9 +144,9 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Shield className="h-8 w-8 text-primary" />
+             	<LifeBuoy className="h-8 w-8 text-primary" />
               <div>
-                <h1 className="text-2xl font-bold">Police Command Center</h1>
+                <h1 className="text-2xl font-bold">User Help Desk </h1>
                 <p className="text-sm text-muted-foreground">Chinnaswamy Stadium - Crowd Management System</p>
               </div>
             </div>

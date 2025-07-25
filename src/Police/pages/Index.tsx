@@ -11,6 +11,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/Police/components/ui
 import { Badge } from '@/Police/components/ui/badge';
 import { CommunicationMessage, IncidentLog as IncidentLogType } from '@/types/crowd';
 import { Shield, Radio, Map, BarChart3, AlertTriangle, Navigation, FileText, Users } from 'lucide-react';
+import { useIncidents } from '@/lib/useIncidents';
+
 
 const Index = () => {
   const [simulation] = useState(() => new CrowdSimulation());
@@ -233,14 +235,6 @@ const Index = () => {
               isSimulationRunning={isRunning}
               onToggleSimulation={handleToggleSimulation}
               onResetSimulation={handleResetSimulation}
-              selectedZoneFilter={selectedZoneFilter}
-              onZoneFilterChange={setSelectedZoneFilter}
-              selectedSeverityFilter={selectedSeverityFilter}
-              onSeverityFilterChange={setSelectedSeverityFilter}
-              historicDataMode={historicDataMode}
-              onToggleHistoricData={setHistoricDataMode}
-              geofencingEnabled={geofencingEnabled}
-              onToggleGeofencing={setGeofencingEnabled}
             />
 
             {/* Tabs for different panels */}
