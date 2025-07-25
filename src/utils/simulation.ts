@@ -68,37 +68,56 @@ export class CrowdSimulation {
 
   // Spread blue dots over all gate locations, equally distributed
   private initializeCrowd() {
-    this.people = [];
-    this.zones = [...ZONES];
-    this.gates = GATES.map(gate => ({
-      ...gate,
-      currentLoad: 0,
-      status: gate.status === 'restricted' ? 'restricted' : 'open' // All green except VIP/restricted
-    }));
+  this.people = [];
+  this.zones = [...ZONES];
+  this.gates = GATES.map(gate => ({
+    ...gate,
+    currentLoad: 0,
+    status: gate.status === 'restricted' ? 'restricted' : 'open'
+  }));
+  this.alerts = [];
+  this.redirections = [];
+  this.tickCount = 0;
 
-    this.alerts = [];
-    this.redirections = [];
-    this.tickCount = 0;
+  let count = 0;
 
-    let count = 0;
-    // Spawn initial blue dots around each gate
-    for (const gate of this.gates) {
-      for (let i = 0; i < this.initialPeoplePerGate; i++) {
-        const angle = Math.random() * 2 * Math.PI;
-        const radius = 0.0001 + Math.random() * 0.00015;
-        const lat = gate.position[0] + Math.cos(angle) * radius;
-        const lng = gate.position[1] + Math.sin(angle) * radius;
-        const person: Person = {
-          id: `person-${count++}`,
-          position: [lat, lng],
-          velocity: [0, 0],
-          targetGate: this.getRandomGate().id,
-          state: Math.random() > 0.7 ? 'moving' : 'waiting'
-        };
-        this.people.push(person);
-      }
+  // 👥 Spawn people around gates (half)
+  for (const gate of this.gates) {
+    for (let i = 0; i < this.initialPeoplePerGate / 2; i++) {
+      const angle = Math.random() * 2 * Math.PI;
+      const radius = 0.0001 + Math.random() * 0.00015;
+      const lat = gate.position[0] + Math.cos(angle) * radius;
+      const lng = gate.position[1] + Math.sin(angle) * radius;
+      this.people.push({
+        id: `person-gate-${count++}`,
+        position: [lat, lng],
+        velocity: [0, 0],
+        targetGate: this.getRandomGate().id,
+        state: Math.random() > 0.7 ? 'moving' : 'waiting'
+      });
     }
   }
+
+  // 👥 Scatter people randomly in zones (half)
+  for (const zone of this.zones) {
+    const peopleInZone = this.initialPeoplePerGate; // or adjust per zone capacity if needed
+    const [minLat, minLng] = zone.bounds[0];
+    const [maxLat, maxLng] = zone.bounds[1];
+
+    for (let i = 0; i < peopleInZone; i++) {
+      const lat = minLat + Math.random() * (maxLat - minLat);
+      const lng = minLng + Math.random() * (maxLng - minLng);
+      this.people.push({
+        id: `person-zone-${count++}`,
+        position: [lat, lng],
+        velocity: [0, 0],
+        targetGate: this.getRandomGate().id,
+        state: Math.random() > 0.7 ? 'moving' : 'waiting'
+      });
+    }
+  }
+}
+
 
   private getRandomPositionInStadium(): [number, number] {
     const minLat = 12.9708, maxLat = 12.9724;

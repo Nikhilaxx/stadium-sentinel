@@ -5,9 +5,14 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",                       // 👈 CHANGE this from "." to "src"
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["*"],                         // Now @/components resolves to src/components
+      "@components/*": ["Police/components/*"],
+      "@types/*": ["Police/types/*"],
+      "@hooks/*": ["Police/hooks/*"],
+      "@lib/*": ["Police/lib/*"],
+      "@utils/*": ["Police/utils/*"]
     },
     "noImplicitAny": false,
     "noUnusedParameters": false,
