@@ -93,7 +93,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({
           </CardContent>
         </Card>
       </div>
-
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       {/* Zone Status */}
       <Card>
         <CardHeader className="pb-3">
@@ -170,6 +170,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({
           ))}
         </CardContent>
       </Card>
+    </div>
     </div>
   );
 };

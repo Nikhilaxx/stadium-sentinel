@@ -199,7 +199,6 @@ const Index = () => {
                     gates={simulationState.gates}
                     people={simulationState.people}
                     alerts={filteredAlerts}
-                    showFlowVectors={showFlowVectors}
                     showHeatmap={showHeatmap}
                   />
                 </div>
@@ -234,10 +233,6 @@ const Index = () => {
               isSimulationRunning={isRunning}
               onToggleSimulation={handleToggleSimulation}
               onResetSimulation={handleResetSimulation}
-              showFlowVectors={showFlowVectors}
-              onToggleFlowVectors={setShowFlowVectors}
-              showHeatmap={showHeatmap}
-              onToggleHeatmap={setShowHeatmap}
               selectedZoneFilter={selectedZoneFilter}
               onZoneFilterChange={setSelectedZoneFilter}
               selectedSeverityFilter={selectedSeverityFilter}

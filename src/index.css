@@ -2,55 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Police Interface Design System - Crowd Management 
-All colors MUST be HSL for proper theming.
+/* Stadium Sentinel Design System - Modern stadium visualization
+All colors MUST be HSL. Inspired by stadium architecture and digital monitoring.
 */
+
+/* Stadium Theme Colors */
+:root {
+  /* Stadium-inspired palette */
+  --stadium-primary: 34 100% 50%;        /* Stadium orange/yellow */
+  --stadium-secondary: 120 50% 40%;      /* Field green */
+  --stadium-accent: 220 100% 60%;        /* Sky blue */
+  --stadium-surface: 0 0% 95%;           /* Concrete gray */
+  --stadium-dark: 210 20% 15%;           /* Stadium structure */
+  
+  /* Gate status indicators */
+  --gate-available: 120 60% 50%;         /* Green for available */
+  --gate-busy: 30 100% 55%;              /* Orange for busy */
+  --gate-closed: 0 70% 50%;              /* Red for closed */
+  --gate-highlight: 220 100% 70%;        /* Blue for selected */
+  
+  /* Interactive elements */
+  --interactive-hover: 220 50% 90%;      /* Light blue hover */
+  --shadow-stadium: 210 20% 15% / 0.2;   /* Stadium shadows */
+  --gradient-field: linear-gradient(135deg, hsl(120 50% 40%), hsl(120 40% 30%));
+  --gradient-stands: linear-gradient(180deg, hsl(210 20% 85%), hsl(210 20% 75%));
+}
 
 @layer base {
   :root {
-    /* Base colors - Dark police theme */
-    --background: 218 25% 8%;
-    --foreground: 210 20% 95%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-    --card: 220 15% 12%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 220 15% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    /* Police blue theme */
-    --primary: 210 80% 45%;
-    --primary-foreground: 210 20% 98%;
+    --primary: var(--stadium-primary);
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 210 20% 85%;
+    --secondary: var(--stadium-secondary);
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 210 10% 60%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 80% 35%;
-    --accent-foreground: 210 20% 98%;
+    --accent: var(--stadium-accent);
+    --accent-foreground: 210 40% 98%;
 
-    /* Alert colors */
-    --destructive: 0 85% 55%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --warning: 45 95% 55%;
-    --warning-foreground: 220 15% 8%;
-
-    --success: 142 76% 36%;
-    --success-foreground: 210 20% 98%;
-
-    /* Crowd density colors */
-    --crowd-low: 142 76% 36%;
-    --crowd-medium: 45 95% 55%;
-    --crowd-high: 0 85% 55%;
-    --crowd-critical: 320 85% 55%;
-
-    /* System colors */
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 210 80% 45%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
 
